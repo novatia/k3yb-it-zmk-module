@@ -1,0 +1,6 @@
+if SHIELD_K3YB_IT
+
+config ZMK_KEYBOARD_NAME
+    default "k3yb.it! by N3"
+
+endif
