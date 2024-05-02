@@ -7,7 +7,9 @@
 
     kscan0: kscan_composite {
         compatible = "zmk,kscan-composite";
-
+        rows = <7>;
+        columns = <16>;
+		
         // Include the matrix GPIO driver
         matrix {
             kscan = <&kscan1>;
@@ -24,34 +26,34 @@
         wakeup-source;
         diode-direction = "col2row";
         
-        col-gpios = <&pro_micro 13 GPIO_ACTIVE_HIGH>
-                  , <&pro_micro 14 GPIO_ACTIVE_HIGH>
-                  , <&pro_micro 15 GPIO_ACTIVE_HIGH>
-                  , <&pro_micro 16 GPIO_ACTIVE_HIGH>;
+        col-gpios = <&pro_micro 21 GPIO_ACTIVE_HIGH>
+                  , <&pro_micro 20 GPIO_ACTIVE_HIGH>
+                  , <&pro_micro 19 GPIO_ACTIVE_HIGH>
+                  , <&pro_micro 18 GPIO_ACTIVE_HIGH>;
 
-        row-gpios = <&pro_micro 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-                   , <&pro_micro 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-                   , <&pro_micro 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-                   , <&pro_micro 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        row-gpios =  <&pro_micro 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
                    , <&pro_micro 7 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
                    , <&pro_micro 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-                   , <&pro_micro 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
+                   , <&pro_micro 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+                   , <&pro_micro 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+                   , <&pro_micro 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+                   , <&pro_micro 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
     };
 
     kscan2: kscan_demux {
         compatible = "zmk,kscan-gpio-demux";
         polling-interval-msec = <200>;
 
-        input-gpios =  <&pro_micro 20 GPIO_ACTIVE_HIGH>
-                     , <&pro_micro 19 GPIO_ACTIVE_HIGH>
-                     , <&pro_micro 18 GPIO_ACTIVE_HIGH>
-                     , <&pro_micro 17 GPIO_ACTIVE_HIGH>;
+        input-gpios =  <&pro_micro 10 GPIO_ACTIVE_HIGH>
+                     , <&pro_micro 16 GPIO_ACTIVE_HIGH>
+                     , <&pro_micro 14 GPIO_ACTIVE_HIGH>
+                     , <&pro_micro 15 GPIO_ACTIVE_HIGH>;
 
-        output-gpios =  <&pro_micro 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-                      , <&pro_micro 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-                      , <&pro_micro 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-                      , <&pro_micro 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        output-gpios =  <&pro_micro 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
                       , <&pro_micro 7 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+                      , <&pro_micro 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+                      , <&pro_micro 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+                      , <&pro_micro 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
                       ;
     };
 	
@@ -78,7 +80,7 @@
                   RC(3,0) RC(3,1) RC(3,2) 
                     RC(4,0)         RC(4,2) RC(4,3)
         >;
-	    debounce_time = <5>; // Set debounce time to 5ms
+		
     };
 	
 	demux_transform: matrix_transform_2 {
@@ -110,6 +112,6 @@
              RC(5,0) RC(5,1) RC(5,2) RC(5,3)                                                          RC(5,11)          RC(5,13)
                                                                              RC(6,8) RC(6,9) RC(6,10) RC(6,11)          RC(6,13) RC(6,14)
          >;
-         debounce_time = <5>; // Set debounce time to 5ms
+        
     };
 };
